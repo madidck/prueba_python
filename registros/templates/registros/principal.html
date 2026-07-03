@@ -1,0 +1,55 @@
+{% extends "inicio/encabezado.html" %}
+{% load static %}
+
+{% block titulo %} Registros {% endblock %}
+{% block nombre_pagina %} Registros {% endblock %}
+
+{% block ruta_imagen %}
+<img src="{% static 'inicio/images/registrar.png' %}">
+{% endblock %}
+
+{% block encabezado_pagina %}
+<div class="page-header">
+    <div class="page-title">
+        <h3>Lista de Registros
+        <small>Consulta de registros desde la base de datos</small></h3>
+    </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Matricula</th>
+                    <th>Nombre</th>
+                    <th>Carrera</th>
+                    <th>Turno</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alumno in alumnos %}
+                <tr>
+                    <td class="text-center">
+                        {% if alumno.imagen %}
+                            <img src="{{ alumno.imagen.url }}" alt="{{ alumno.nombre }}" class="img-media" style="width: 50px; height: 50px; border-radius: 50%;">
+                        {% endif %}
+                    </td>
+                    <td class="text-semibold">{{ alumno.matricula }}</td>
+                    <td class="muted">{{ alumno.nombre }}</td>
+                    <td class="muted">{{ alumno.carrera }}</td>
+                    <td class="muted">{{ alumno.turno }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay alumnos registrados.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
