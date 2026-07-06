@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Alumnos
 from .forms import ComentarioContactoForm
+from .models import Comentario
+from .models import ComentarioContacto
 
 # Create your views here.
 def registros (request):
@@ -19,3 +21,8 @@ def registrar(request):
 
 def contacto(request):
     return render(request,"registros/contacto.html")
+
+def consultarComentario(request):
+    comentarios = ComentarioContacto.objects.all()
+    # Este nombre coincide con el archivo que tienes en la carpeta
+    return render(request, "registros/consultaContacto.html", {'comentarios': comentarios})

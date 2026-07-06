@@ -27,7 +27,9 @@ urlpatterns = [
     path('contacto/',views_registros.contacto,name="Contacto"),
     path('formulario/',views.formulario, name="Formulario"),
     path('ejemplo/',views.ejemplo,name="Ejemplo"),
-    path('registrar/',views_registros.registrar,name="Registrar")
+    path('registrar/',views_registros.registrar,name="Registrar"),
+    # Fíjate que el nombre de la ruta y la función coinciden
+    path('consultarComentario/', views_registros.consultarComentario, name='ConsultarComentario'),
 ]
 if settings.DEBUG:
     from django.conf.urls.static import static
